@@ -5,8 +5,9 @@ from PyQt5.QtCore import Qt
 from  PyQt5.QtGui import *
 
 class Inventory(QWidget):
-    def __init__(self):
+    def __init__(self,uname):
         super().__init__()
+        self.username=uname
         self.set_ui()
         self.load_item()
         self.setObjectName("myWindow")
@@ -19,7 +20,8 @@ class Inventory(QWidget):
 
         #for Layout
         v=QVBoxLayout()
-
+        self.welcome_lbl=QLabel(f"Welcome {self.username}")
+        self.welcome_lbl.setObjectName("welcomeuser")
         #for form layout
         form=QFormLayout()
         self.lbl1=QLabel("Enter item name: ")
@@ -36,6 +38,7 @@ class Inventory(QWidget):
         form.addRow(self.lbl1,self.txt1)
         form.addRow(self.lbl2,self.txt2)
         form.addRow(self.lbl3,self.txt3)
+        v.addWidget(self.welcome_lbl)
         v.addLayout(form)
 
         #for button
@@ -73,6 +76,14 @@ class Inventory(QWidget):
         self.setStyleSheet('''
         #myWindow{
         background-color:#c1c1e1;
+        }
+        
+        QLabel#welcomeuser{
+        font-family:Times New Roman;
+        font-weight:bold;
+        font-size:26px;
+        margin-top:8px;
+        margin-bottom:10px;
         }
         
         QLabel{
@@ -128,7 +139,7 @@ class Inventory(QWidget):
         }
         ''')
 
-
+        self.welcome_lbl.setAlignment(Qt.AlignHCenter)
         self.setLayout(v)
 
     def load_item(self):
@@ -204,7 +215,7 @@ class Inventory(QWidget):
 
 if __name__=="__main__":
     a=QApplication(sys.argv)
-    w=Inventory()
+    w=Inventory("")
     w.show()
     sys.exit(a.exec_())
 

@@ -11,5 +11,20 @@ cur.execute('''
   );
 ''')
 
+cur.execute('''
+ CREATE TABLE IF NOT EXISTS user(
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ firstname TEXT NOT NULL,
+ lastname TEXT NOT NULL,
+ username TEXT NOT NULL,
+ address TEXT NOT NULL,
+ phone_no TEXT NOT NULL,
+ email TEXT NOT NULL,
+ new_password TEXT NOT NULL,
+ confirm_password TEXT NOT NULL,
+ gender TEXT
+);
+''')
+
 conn.commit()
 conn.close()
