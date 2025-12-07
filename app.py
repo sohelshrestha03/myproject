@@ -163,6 +163,7 @@ class Inventory(QWidget):
         self.welcome_lbl.setAlignment(Qt.AlignHCenter)
         self.setLayout(v)
 
+    #Loading data from database
     def load_item(self):
         conn = sqlite3.connect('inventory.db')
         cur = conn.cursor()
@@ -177,6 +178,7 @@ class Inventory(QWidget):
             for col, c_data in enumerate(data):
                 self.table.setItem(num, col, QTableWidgetItem(str(c_data)))
 
+    #for adding item
     def add_item(self):
         n = self.txt1.text().strip()
         q = self.txt2.value()
@@ -197,6 +199,7 @@ class Inventory(QWidget):
         self.txt2.setValue(0)
         self.txt3.setValue(0)
 
+    #For deleting items
     def delete_item(self):
         s = self.table.currentRow()
 
@@ -212,6 +215,7 @@ class Inventory(QWidget):
         conn.close()
         self.load_item()
 
+    #For updating items
     def update_item(self):
         i = self.table.currentRow()
         n = self.txt1.text().strip()
@@ -234,6 +238,7 @@ class Inventory(QWidget):
         conn.close()
         self.load_item()
 
+    #For logout function
     def log_out(self):
         from login import Login
         self.outlog=Login()

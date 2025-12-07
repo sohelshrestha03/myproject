@@ -10,11 +10,11 @@ class ForgotPassword(QWidget):
     def __init__(self):
         super().__init__()
         self.set_ui()
-
+    #For setting UI
     def set_ui(self):
         self.setWindowTitle("Forgot Password")
         self.setGeometry(200, 200, 350, 350)
-
+        #For layout
         form_layout = QFormLayout()
         self.head = QLabel("Change Your Password")
         self.head.setObjectName('heading')
@@ -39,7 +39,7 @@ class ForgotPassword(QWidget):
         self.back_lbl.setOpenExternalLinks(False)
         self.back_lbl.linkActivated.connect(self.open_log)
         self.back_lbl.setObjectName('back')
-
+        #adding element in layout
         form_layout.addRow(self.head)
         form_layout.addRow(self.username_lbl)
         form_layout.addRow(self.a)
@@ -49,7 +49,7 @@ class ForgotPassword(QWidget):
         form_layout.addRow(self.c)
         form_layout.addRow(self.reset_btn)
         form_layout.addRow(self.back_lbl)
-
+        #Align elements in horizontal center
         self.head.setAlignment(Qt.AlignHCenter)
         self.username_lbl.setAlignment(Qt.AlignHCenter)
         self.a.setAlignment(Qt.AlignHCenter)
@@ -58,7 +58,7 @@ class ForgotPassword(QWidget):
         self.confirm.setAlignment(Qt.AlignHCenter)
         self.c.setAlignment(Qt.AlignHCenter)
         self.back_lbl.setAlignment(Qt.AlignHCenter)
-
+        #For stylesheet
         self.setStyleSheet('''
         QLabel#heading{
         font-family:Times New Roman;
@@ -104,6 +104,7 @@ class ForgotPassword(QWidget):
 
         self.setLayout(form_layout)
 
+    #Fuction for reseting password
     def reset_pwd(self):
         u = self.a.text().strip()
         n = self.b.text()
@@ -134,6 +135,7 @@ class ForgotPassword(QWidget):
 
         conn.close()
 
+    #Opening login page
     def open_log(self):
         from login import Login
         self.login = Login()

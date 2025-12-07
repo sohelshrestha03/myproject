@@ -156,7 +156,7 @@ class RegisterPage(QWidget):
 
         # setting layout
         self.setLayout(f)
-
+    #function for form validation
     def validation(self):
         fname = self.txt1.text().strip()
         lname = self.txt2.text().strip()
@@ -227,13 +227,13 @@ class RegisterPage(QWidget):
         conn.close()
         QMessageBox.information(self, "Account Created", "Your account has been created successfully.")
         self.clear_box()
-
+    #Displaying error message
     def display_error(self, m):
         QMessageBox.critical(self, 'Empty', m)
-
+    #Displaying this message when both new and confirm password is unmatched
     def pwd_msg(self, n):
         QMessageBox.critical(self, "Unmatched", n)
-
+    #For clearing form after certain process is done
     def clear_box(self):
         self.txt1.clear()
         self.txt2.clear()
@@ -248,7 +248,7 @@ class RegisterPage(QWidget):
             radio.setAutoExclusive(False)
             radio.setChecked(False)
             radio.setAutoExclusive(True)
-
+    #Open a login
     def open_login(self):
         from login import Login
         self.login = Login()

@@ -11,12 +11,12 @@ class Login(QWidget):
     def __init__(self):
         super().__init__()
         self.set_ui()
-
+    #For setting UI
     def set_ui(self):
         self.setWindowTitle("Login")
         self.setGeometry(200, 200, 350, 370)
         self.setObjectName('main')
-
+        #Form layout with elements
         l = QFormLayout()
         self.lbl = QLabel("User Login")
         self.lbl.setObjectName('user_login')
@@ -39,14 +39,14 @@ class Login(QWidget):
         self.lblreg.setOpenExternalLinks(False)
         self.lblreg.linkActivated.connect(self.open_register)
         self.lblreg.setObjectName('golink')
-
+        #Align some elements in horizontal center
         self.lbl.setAlignment(Qt.AlignHCenter)
         self.lbl1.setAlignment(Qt.AlignHCenter)
         self.lbl2.setAlignment(Qt.AlignHCenter)
         self.txt1.setAlignment(Qt.AlignHCenter)
         self.txt2.setAlignment(Qt.AlignHCenter)
         self.forgot_lbl.setAlignment(Qt.AlignHCenter)
-
+        #adding elements in form layout
         l.addRow(self.lbl)
         l.addRow(self.lbl1)
         l.addRow(self.txt1)
@@ -55,7 +55,7 @@ class Login(QWidget):
         l.addRow(self.btn)
         l.addRow(self.forgot_lbl)
         l.addRow(self.acclbl, self.lblreg)
-
+        #setting style for UI
         self.setStyleSheet('''
         QWidget#main{
         background-color:#bbc1cd;
@@ -98,9 +98,9 @@ class Login(QWidget):
 
 
         ''')
-
+        #Setting layout
         self.setLayout(l)
-
+    #Fuction for login account
     def login_account(self):
         uname = self.txt1.text().strip()
         pwd = self.txt2.text().strip()
@@ -125,13 +125,13 @@ class Login(QWidget):
 
         else:
             QMessageBox.critical(self, "Invalid", "Invalid username and password.")
-
+    #fuction to open register
     def open_register(self):
         from register import RegisterPage
         self.reg = RegisterPage()
         self.reg.show()
         self.close()
-
+    #Function to open forgot password form
     def open_forget(self):
         from forgotpwd import ForgotPassword
         self.fp = ForgotPassword()
