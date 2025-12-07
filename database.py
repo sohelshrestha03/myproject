@@ -7,7 +7,9 @@ cur.execute('''
   name TEXT NOT NULL,
   quantity INTEGER NOT NULL,
   price REAL NOT NULL,
-  total REAL NOT NULL
+  total REAL NOT NULL,
+  userid INTEGER NOT NULL,
+  FOREIGN KEY(userid) REFERENCES user(id)
   );
 ''')
 
