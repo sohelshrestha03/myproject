@@ -218,7 +218,11 @@ class RegisterPage(QWidget):
         cur = conn.cursor()
 
         # For preventing from username and email which is already used
-        cur.execute("SELECT * FROM user WHERE username=? and email=?", (uname, e))
+        cur.execute("SELECT * FROM user WHERE username=? OR email=?", (uname, e))
+        if cur.fetchone():
+            QMessageBox.warning(self, "Data Exist", "Username or Email already registered.")
+            conn.close()
+            return
 
         # For inserting data
         cur.execute('''INSERT INTO user(firstname,lastname,username,address,phone_no,email,new_password,confirm_password,gender)
